@@ -26,6 +26,7 @@ class MarvelService {
         return {
             id: char.id,
             name: char.name,
+            comics: char.comics.items,
             decription: char.description.length > 130 ? char.description.substring(0, 190) + "..." : "No decription",
             thumbnail: char.thumbnail.path + "." + char.thumbnail.extension,
             homepage: char.urls[0].url,
