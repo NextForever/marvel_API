@@ -2,14 +2,13 @@ import { useState, useEffect } from "react";
 import useMarvelService from "../../services/MarvelService";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
-import PropTypes from "prop-types";
 
 import "./comicsList.scss";
 
 const ComicsList = () => {
     const [comicsList, setComicsList] = useState([]);
     const [newItemLoading, setNewItemLoading] = useState(false);
-    const [offset, setOffset] = useState(240);
+    const [offset, setOffset] = useState(0);
     const [comicsEnded, setComicsEnded] = useState(false);
 
     const { error, loading, getAllComics } = useMarvelService();
@@ -33,18 +32,13 @@ const ComicsList = () => {
 
         setNewItemLoading((newItemLoading) => false);
         setOffset((offset) => offset + 8);
-        setComicsEnded((charEnded) => ended);
+        setComicsEnded((comicsEnded) => ended);
     };
 
     function renderItems(arr) {
         const items = arr.map((item, i) => {
-            let imgStyle = { objectFit: "cover" };
-            if (item.thumbnail === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg") {
-                imgStyle = { objectFit: "unset" };
-            }
-
             return (
-                <li className='comics__item' key={i} tabIndex={0}>
+                <li className='comics__item' key={i} tabIndex={item.id}>
                     <a href={item.url}>
                         <img src={item.thumbnail} alt={item.title} className='comics__item-img' />
                         <div className='comics__item-name'>{item.title}</div>

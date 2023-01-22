@@ -5,16 +5,17 @@ import AppHeader from "../appHeader/AppHeader";
 // import CharList from "../charList/CharList";
 // import CharInfo from "../charInfo/CharInfo";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
-import ComicsList from "../comicsList/ComicsList";
+// import ComicsList from "../comicsList/ComicsList";
+import SingleComic from "../singleComic/SingleComic";
 
 // import decoration from "../../resources/img/vision.png";
 
 const App = () => {
-    const [selectedChar, setChar] = useState(null);
+    // const [selectedChar, setChar] = useState(null);
 
-    const onCharSelected = (id) => {
-        setChar(id);
-    };
+    // const onCharSelected = (id) => {
+    //     setChar(id);
+    // };
 
     return (
         <div className='app'>
@@ -34,8 +35,11 @@ const App = () => {
                     </ErrorBoundary>
                 </div>
                 <img className='bg-decoration' src={decoration} alt='vision' /> */}
-                <ErrorBoundary>
+                {/* <ErrorBoundary>
                     <ComicsList />
+                </ErrorBoundary> */}
+                <ErrorBoundary>
+                    <SingleComic />
                 </ErrorBoundary>
             </main>
         </div>
