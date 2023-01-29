@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import Spinner from "../spinner/Spinner";
-import ErrorMessage from "../errorMessage/ErrorMessage";
-import useMarvelService from "../../services/MarvelService";
-import Skeleton from "../skeleton/Skeleton";
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
+import useMarvelService from '../../services/MarvelService';
+import Skeleton from '../skeleton/Skeleton';
 
-import "./charInfo.scss";
+import './charInfo.scss';
 
-const CharInfo = (props) => {
+const CharInfo = props => {
     const [char, setChar] = useState(null);
 
     const { error, loading, getCharacter, clearError } = useMarvelService();
@@ -25,7 +25,7 @@ const CharInfo = (props) => {
         getCharacter(charId).then(onCharLoaded);
     };
 
-    const onCharLoaded = (char) => {
+    const onCharLoaded = char => {
         setChar(char);
     };
 
@@ -47,9 +47,9 @@ const CharInfo = (props) => {
 const View = ({ char }) => {
     const { name, description, comics, thumbnail, homepage, wiki } = char;
 
-    let imgStyle = { objectFit: "cover" };
-    if (thumbnail === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg") {
-        imgStyle = { objectFit: "contain" };
+    let imgStyle = { objectFit: 'cover' };
+    if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+        imgStyle = { objectFit: 'contain' };
     }
 
     return (
@@ -71,7 +71,7 @@ const View = ({ char }) => {
             <div className='char__descr'>{description}</div>
             <div className='char__comics'>Comics:</div>
             <ul className='char__comics-list'>
-                {comics.length > 0 ? null : "comics not found"}
+                {comics.length > 0 ? null : 'comics not found'}
                 {comics.slice(0, 10).map((item, i) => (
                     <li key={i} className='char__comics-item'>
                         {item.name}
