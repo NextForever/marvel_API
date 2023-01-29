@@ -1,10 +1,10 @@
-import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import useMarvelService from "../../services/MarvelService";
-import Spinner from "../spinner/Spinner";
-import ErrorMessage from "../errorMessage/ErrorMessage";
+import { useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import useMarvelService from '../../services/MarvelService';
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 
-import "./singleComicPage.scss";
+import './singleComicPage.scss';
 
 const SingleComicPage = () => {
     const { comicId } = useParams();
@@ -13,6 +13,7 @@ const SingleComicPage = () => {
 
     useEffect(() => {
         updateComic();
+        // eslint-disable-next-line
     }, [comicId]);
 
     const updateComic = () => {
@@ -20,7 +21,7 @@ const SingleComicPage = () => {
         getComic(comicId).then(onComicLoaded);
     };
 
-    const onComicLoaded = (comic) => {
+    const onComicLoaded = comic => {
         setComic(comic);
     };
 
